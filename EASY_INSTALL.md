@@ -1,30 +1,17 @@
-# 🚀 CyberMind - 10 Second Installation
+# 🚀 CyberMind - 30 Second Installation
 
-## For Judges & Reviewers - Super Quick Install!
+## For Judges & Reviewers - Quick Install!
 
-### **Option 1: One-Click Install (Recommended)** ⚡
+### **Installation Steps** ⚡
 
 1. **Click this link**: [Install CyberMind](https://github.com/YOUR_USERNAME/cybermind2/releases/latest)
-2. Download the **`cybermind.crx`** file
-3. **Drag and drop** the `.crx` file into Chrome
-4. Click **"Add Extension"**
-5. **Done!** 🎉
-
-**Total time: 10 seconds**
-
----
-
-### **Option 2: Load from Folder** 📁
-
-If Option 1 doesn't work (Chrome security settings):
-
-1. Download the **`cybermind-extension.zip`** from [Releases](https://github.com/YOUR_USERNAME/cybermind2/releases/latest)
-2. Extract the ZIP file
-3. Open Chrome → `chrome://extensions/`
-4. Enable **"Developer mode"** (top-right toggle)
-5. Click **"Load unpacked"**
-6. Select the extracted **`extension`** folder
-7. **Done!** 🎉
+2. Download the **`cybermind-extension.zip`** file
+3. **Extract the ZIP** to a folder on your computer
+4. Open Chrome and go to: **`chrome://extensions/`**
+5. Enable **"Developer mode"** (toggle in top-right corner)
+6. Click **"Load unpacked"** button
+7. Select the **`extension`** folder (from the extracted files)
+8. **Done!** 🎉
 
 **Total time: 30 seconds**
 
@@ -50,14 +37,14 @@ After installing, you should see:
 
 ## 🆘 Troubleshooting
 
-**Can't drag .crx file?**
-- Use Option 2 (Load unpacked)
-- Chrome sometimes blocks .crx files for security
-
 **Extension not working?**
 - Make sure you're on a website (not chrome:// pages)
 - Refresh the page after installing
 - Check that extension is enabled in `chrome://extensions/`
+
+**Can't find the extension folder?**
+- After extracting the ZIP, look for a folder named `extension`
+- Select that folder when clicking "Load unpacked"
 
 ---
 
