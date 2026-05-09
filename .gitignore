@@ -31,3 +31,12 @@ build/
 *.tmp
 *.temp
 .cache/
+
+# Extension packaging
+*.crx
+*.pem
+*.zip
+extension.crx
+extension.pem
+cybermind.crx
+cybermind-extension.zip

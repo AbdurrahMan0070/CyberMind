@@ -21,27 +21,41 @@ CyberMind is a **zero-click security extension** that:
 
 ---
 
-## 🚀 Installation (30 Seconds)
+## 🚀 Quick Install (10 Seconds!)
 
-### **Step 1: Download**
-- Click the green **"Code"** button above
-- Select **"Download ZIP"**
-- Extract the ZIP file to a folder
+### **For Judges & Reviewers** ⚡
 
-### **Step 2: Install in Chrome**
-1. Open Chrome and go to: `chrome://extensions/`
-2. Enable **"Developer mode"** (toggle in top-right corner)
-3. Click **"Load unpacked"**
-4. Select the **`extension`** folder from the extracted files
-5. Done! The CyberMind icon appears in your toolbar
+**[📥 Download Extension Here](https://github.com/YOUR_USERNAME/cybermind2/releases/latest)**
 
-### **Step 3: Start Browsing**
-- Visit any website
-- CyberMind automatically scans it
-- Click the extension icon to see results
+1. Click the link above
+2. Download **`cybermind.crx`** file
+3. **Drag and drop** it into Chrome
+4. Click **"Add Extension"**
+5. **Done!** Start browsing - automatic protection! 🛡️
+
+**Total time: 10 seconds** ⏱️
+
+---
+
+### **Alternative Method** (if drag-and-drop doesn't work)
+
+1. Download **`cybermind-extension.zip`** from [Releases](https://github.com/YOUR_USERNAME/cybermind2/releases/latest)
+2. Extract the ZIP file
+3. Open Chrome → `chrome://extensions/`
+4. Enable **"Developer mode"** (top-right toggle)
+5. Click **"Load unpacked"**
+6. Select the **`extension`** folder
+7. **Done!** 🎉
+
+---
+
+### **After Installing:**
+- 🛡️ CyberMind icon appears in toolbar
+- Visit any website → automatic scan
+- Click icon to see results
 - Badge color shows threat level:
   - 🟢 Green = Safe
-  - 🟡 Yellow = Warning
+  - 🟡 Yellow = Warning  
   - 🔴 Red = Threat
 
 **That's it! You're protected!** 🛡️
