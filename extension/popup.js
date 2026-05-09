@@ -1,43 +1,14 @@
-// Popup script for CyberMind extension
-console.log('Popup script loaded');
-
-// Dashboard button handler
+// Popup script for CyberMind extension - Standalone mode
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded');
-  
-  const dashboardBtn = document.getElementById('dashboardBtn');
-  console.log('Dashboard button found:', dashboardBtn);
-  
-  if (dashboardBtn) {
-    dashboardBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      console.log('Dashboard button clicked!');
-      
-      chrome.tabs.create({
-        url: 'http://localhost:4000'
-      }, function(tab) {
-        if (chrome.runtime.lastError) {
-          console.error('Error:', chrome.runtime.lastError);
-        } else {
-          console.log('Tab created successfully:', tab);
-        }
-      });
-    });
-    console.log('Click listener attached');
-  } else {
-    console.error('Dashboard button not found!');
-  }
-
   // Get current domain
   chrome.tabs.query({active:true, currentWindow:true}, function(tabs) {
     try { 
       if (tabs[0] && tabs[0].url) {
         const domain = new URL(tabs[0].url).hostname;
         document.getElementById('domain').textContent = domain;
-        console.log('Current domain:', domain);
       }
     } catch(e) {
-      console.error('Error getting domain:', e);
+      document.getElementById('domain').textContent = 'Unknown';
     }
   });
 
