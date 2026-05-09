@@ -58,42 +58,85 @@ CyberMind automatically analyzes every website you visit using 4 specialized AI 
 
 ## 🚀 Quick Start
 
-### **Prerequisites**
-- Node.js 16+ ([Download](https://nodejs.org/))
-- Chrome or Edge browser
+### **For Users: Try CyberMind in 5 Minutes**
 
-### **Installation (5 minutes)**
+#### **Step 1: Download**
+```bash
+# Clone this repository
+git clone https://github.com/yourusername/cybermind.git
+cd cybermind
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/cybermind.git
-   cd cybermind
-   ```
+Or download as ZIP:
+1. Click the green "Code" button above
+2. Click "Download ZIP"
+3. Extract the ZIP file
 
-2. **Install dependencies**
-   ```bash
-   cd server
-   npm install
-   cd ..
-   ```
+#### **Step 2: Install Dependencies**
+```bash
+cd server
+npm install
+```
+*This installs the required packages (takes 1-2 minutes)*
 
-3. **Start the server**
-   ```bash
-   cd server
-   npm start
-   ```
-   Keep this terminal open!
+#### **Step 3: Start the Server**
+```bash
+npm start
+```
+*Keep this terminal window open! You should see:*
+```
+⬡ CyberMind running → http://localhost:4000
+⬡ WebSocket ready
+```
 
-4. **Load Chrome extension**
-   - Open `chrome://extensions/`
-   - Enable "Developer mode"
-   - Click "Load unpacked"
-   - Select the `extension` folder
+#### **Step 4: Install Chrome Extension**
+1. Open Chrome and go to: `chrome://extensions/`
+2. Enable "Developer mode" (toggle in top-right)
+3. Click "Load unpacked"
+4. Navigate to the `cybermind/extension` folder
+5. Click "Select Folder"
 
-5. **Start browsing!**
-   - Visit any website
-   - Click the extension icon for results
-   - Click "View Dashboard" for full reports
+#### **Step 5: Start Using!**
+- **Browse any website** - CyberMind automatically scans it!
+- **Click the extension icon** - See instant threat analysis
+- **Click "View Dashboard"** - See full reports at http://localhost:4000
+
+### **That's it! You're protected!** 🛡️
+
+---
+
+## 🎬 See It In Action
+
+### **Try These Examples:**
+
+1. **Visit google.com**
+   - Click extension icon
+   - See "CLEAN" status
+   - Threat score: Low
+
+2. **Visit a news article**
+   - ArgusAI automatically activates
+   - Fact-checks the content
+   - Shows credibility score
+
+3. **Visit a login page**
+   - VaultBreaker automatically activates
+   - Tests for vulnerabilities
+   - Shows security score
+
+4. **Use the Dashboard**
+   - Click "View Dashboard" in extension
+   - See real-time agent activity
+   - View scan history
+   - Test any domain manually
+
+---
+
+## 📖 Full Documentation
+
+- **[Installation Guide](INSTALLATION_GUIDE.md)** - Detailed setup instructions
+- **[Quick Start](QUICK_START.md)** - Fast 5-minute setup
+- **[GitHub Setup](GITHUB_SETUP.md)** - For contributors
 
 ---
 
