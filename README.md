@@ -25,7 +25,7 @@ CyberMind is a **zero-click security extension** that:
 
 ### **For Judges & Reviewers** ⚡
 
-**[📥 Download Extension Here](https://github.com/YOUR_USERNAME/cybermind2/releases/latest)**
+**[📥 Download Extension Here](https://github.com/AbdurrahMan0070/cybermind2/releases/latest)**
 
 1. Click the link above
 2. Download **`cybermind-extension.zip`**
@@ -235,4 +235,4 @@ Give it a star on GitHub! It helps others discover it.
 
 ---
 
-**Made for [Your Hackathon Name] 2024**
+**Made By Team Vortex 2026**
