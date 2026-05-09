@@ -4,7 +4,7 @@
 
 ### **Installation Steps** ⚡
 
-1. **Click this link**: [Install CyberMind](https://github.com/YOUR_USERNAME/cybermind2/releases/latest)
+1. **Click this link**: [Install CyberMind](https://github.com/AbdurrahMan0070/cybermind/releases/latest)
 2. Download the **`cybermind-extension.zip`** file
 3. **Extract the ZIP** to a folder on your computer
 4. Open Chrome and go to: **`chrome://extensions/`**
