@@ -1,0 +1,30 @@
+{
+  "name": "cybermind",
+  "version": "1.0.0",
+  "description": "Autonomous Cyber Intelligence Platform - AI-powered browser extension for threat detection",
+  "main": "server/server.js",
+  "scripts": {
+    "install-deps": "cd server && npm install",
+    "start": "cd server && npm start",
+    "dev": "cd server && npm run dev"
+  },
+  "keywords": [
+    "cybersecurity",
+    "threat-detection",
+    "ai",
+    "browser-extension",
+    "osint",
+    "security",
+    "chrome-extension"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cybermind"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

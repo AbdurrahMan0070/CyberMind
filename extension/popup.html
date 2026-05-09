@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:320px;background:#0f1117;color:#d1daf5;font-family:'Inter',sans-serif;border:1px solid #2a3350}
+.header{background:#161b27;padding:16px 18px;border-bottom:1px solid #2a3350;display:flex;align-items:center;gap:12px}
+.logo-box{width:32px;height:32px;background:#4dd9e0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#0f1117;font-size:14px}
+.logo-name{font-size:15px;font-weight:700;letter-spacing:0.3px}
+.dot{width:8px;height:8px;border-radius:50%;margin-left:auto}
+.dot-green{background:#4ade80;box-shadow:0 0 8px #4ade80;animation:p 2s infinite}
+.dot-yellow{background:#fbbf24;box-shadow:0 0 8px #fbbf24}
+.dot-red{background:#f87171;box-shadow:0 0 8px #f87171;animation:p .8s infinite}
+.dot-gray{background:#4a5a7a}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+.row{padding:16px 18px;border-bottom:1px solid #2a3350}
+.label{font-size:10px;color:#4a5a7a;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;font-weight:600}
+.domain{font-family:'JetBrains Mono',monospace;font-size:12px;color:#4dd9e0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-top:8px;letter-spacing:.5px}
+.b-clean{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.35)}
+.b-medium{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.35)}
+.b-high,.b-critical{background:rgba(248,113,113,.15);color:#f87171;border:1px solid rgba(248,113,113,.35)}
+.b-scanning{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.35)}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 18px;gap:8px;border-bottom:1px solid #2a3350}
+.stat{text-align:center;padding:8px 0}
+.stat-n{font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1}
+.stat-l{font-size:10px;color:#4a5a7a;letter-spacing:1px;margin-top:6px;font-weight:500}
+.teal{color:#4dd9e0}.red{color:#f87171}.green{color:#4ade80}
+.btn{display:block;width:100%;padding:16px;background:#161b27;border:none;border-top:1px solid #2a3350;color:#4dd9e0;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:center}
+.btn:hover{background:#1c2333;transform:translateY(-1px);box-shadow:0 4px 12px rgba(77,217,224,0.2)}
+.btn:active{transform:translateY(0)}
+.footer{padding:10px 18px;font-size:9px;color:#2a3350;text-align:center;letter-spacing:1.5px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo-box">C</div>
+  <div>
+    <div class="logo-name">CyberMind</div>
+  </div>
+  <div class="dot dot-green" id="dot"></div>
+</div>
+
+<div class="row">
+  <div class="label">Current Page</div>
+  <div class="domain" id="domain">Loading...</div>
+  <div class="badge b-scanning" id="badge">SCANNING</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n teal" id="total">0</div><div class="stat-l">Scanned</div></div>
+  <div class="stat"><div class="stat-n" style="color:#fbbf24" id="warns">0</div><div class="stat-l">Warnings</div></div>
+  <div class="stat"><div class="stat-n red" id="threats">0</div><div class="stat-l">Threats</div></div>
+</div>
+
+<button class="btn" id="dashboardBtn">⬡ View Dashboard</button>
+<div class="footer">CYBERMIND · PASSIVE SURVEILLANCE ACTIVE</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
