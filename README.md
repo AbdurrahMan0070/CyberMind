@@ -49,16 +49,31 @@ CyberMind is a **zero-click security extension** that:
 
 ---
 
-## 🎬 Live Demo
+## 🚀 Quick Install (30 Seconds!)
 
-**Want to see it in action?** Check out our **[Demo Guide](DEMO.md)** for a complete walkthrough!
+### **For Judges & Reviewers** ⚡
 
-**Quick 2-Minute Demo:**
-1. Install extension (30 seconds)
-2. Visit google.com → Badge turns **green** ✓ (trusted)
-3. Visit any website → **Automatic scan** happens
-4. Click extension icon → See **detailed threat analysis**
-5. Open multiple tabs → Watch **all badges update** automatically
+**[📥 Download Extension Here](https://github.com/AbdurrahMan0070/CyberMind/releases/latest)**
+
+1. Click the link above
+2. Download **`cybermind-extension.zip`**
+3. **Extract the ZIP file** to a folder
+4. Open Chrome → `chrome://extensions/`
+5. Enable **"Developer mode"** (top-right toggle)
+6. Click **"Load unpacked"**
+7. Select the **`extension`** folder (from extracted files)
+8. **Done!** 🎉
+
+### **After Installing:**
+- 🛡️ **CyberMind icon** appears in your Chrome toolbar
+- Visit any website → **automatic scan starts**
+- Click the icon to see **detailed results**
+- Badge color shows threat level:
+  - 🟢 **Green** = Safe / Trusted
+  - 🟡 **Yellow** = Warning / Caution
+  - 🔴 **Red** = Threat / Danger
+
+**That's it! You're protected!** 🛡️
 
 ---
 
@@ -235,7 +250,6 @@ Badge changes color based on threat level
 
 ## 📚 Documentation
 
-- 📖 **[Demo Guide](DEMO.md)** - Complete walkthrough for judges and reviewers
 - 🤝 **[Contributing](CONTRIBUTING.md)** - Help make CyberMind better!
 - 📝 **[Changelog](CHANGELOG.md)** - Version history and updates
 - ⚠️ **[Limitations](LIMITATIONS.md)** - Technical details and restrictions
