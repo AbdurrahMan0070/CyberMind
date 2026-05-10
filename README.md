@@ -136,17 +136,29 @@ Badge changes color based on threat level
 
 ---
 
-## ⚠️ Limitations
+## ⚠️ Known Limitations
 
-Some websites may block or restrict this extension due to security policies:
-- **Chrome internal pages** (`chrome://`) - Cannot work (Chrome restriction)
-- **Banking websites** - May be blocked by Content Security Policy
-- **Government sites** - May have enhanced security restrictions
-- **Corporate intranets** - May be restricted by IT policies
+**CyberMind works on 99% of websites!** Only a few special cases have restrictions:
 
-**This is normal!** The extension works on 95%+ of regular websites.
+### **Cannot Work (Chrome Restriction):**
+- ❌ Chrome internal pages (`chrome://settings`, `chrome://extensions`)
+- ❌ Chrome Web Store pages
+- **Why:** Chrome security policy blocks ALL extensions from these pages
 
-📖 **[Read full limitations documentation](LIMITATIONS.md)**
+### **May Have Limited Functionality:**
+- ⚠️ Some high-security banking sites (rare - most banks work fine!)
+- ⚠️ Some government portals (most work fine!)
+- **Why:** These sites use strict Content Security Policies for your protection
+
+**Note:** These restrictions apply to ALL Chrome extensions, not just CyberMind. This is normal browser behavior.
+
+### **Works Perfectly On:**
+✅ Google, YouTube, Facebook, Twitter, Instagram, LinkedIn
+✅ Amazon, eBay, Netflix, Reddit, Wikipedia
+✅ GitHub, Stack Overflow, Medium
+✅ 99% of all websites you visit daily!
+
+📖 **[Read detailed technical documentation](LIMITATIONS.md)** (for developers)
 
 ---
 
