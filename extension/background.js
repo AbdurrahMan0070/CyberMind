@@ -1,8 +1,4 @@
-// CyberMind Backend Configuration
-const BACKEND = 'https://cyber-mind-two.vercel.app';
-// After deploying to Vercel, replace the URL above with your Vercel URL
-// Example: const BACKEND = 'https://cybermind-abc123.vercel.app';
-
+// CyberMind - Standalone Mode (No server needed!)
 const cache = new Map();
 const CACHE_TTL = 60 * 60 * 1000;
 
@@ -83,42 +79,14 @@ async function scan(payload, tabId) {
 
   setBadge(tabId, 'scanning');
 
-  try {
-    // Try backend first
-    const response = await fetch(`${BACKEND}/api/scan`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      cache.set(key, { severity: result.severity, ts: Date.now() });
-      setBadge(tabId, result.severity);
-
-      // Show notification for high threats
-      if (['high','critical'].includes(result.severity)) {
-        chrome.notifications.create({
-          type: 'basic',
-          iconUrl: 'icon48.png',
-          title: chrome.i18n.getMessage('threatDetected') || '⚠ CyberMind Threat Detected',
-          message: `${payload.domain}: ${result.summary.slice(0, 100)}`
-        });
-      }
-      return;
-    }
-  } catch (error) {
-    console.log('Backend unavailable, using local analysis');
-  }
-
-  // Fallback to local analysis
+  // Local analysis only (no server needed!)
   await new Promise(resolve => setTimeout(resolve, 500));
   const result = analyzeDomain(payload.domain);
   
   cache.set(key, { severity: result.severity, ts: Date.now() });
   setBadge(tabId, result.severity);
 
-  // Store in local storage as backup
+  // Store scan in local storage
   chrome.storage.local.get('scans', (data) => {
     const stored = data.scans || [];
     stored.unshift({
@@ -143,6 +111,7 @@ async function scan(payload, tabId) {
     chrome.storage.local.set({ scans: stored.slice(0, 100) });
   });
 
+  // Show notification for high threats
   if (['high','critical'].includes(result.severity)) {
     chrome.notifications.create({
       type: 'basic',

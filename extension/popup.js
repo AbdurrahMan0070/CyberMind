@@ -8,12 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Dashboard button handler
   document.getElementById('dashboardBtn').addEventListener('click', function() {
-    // ⚠️ CHANGE THIS AFTER DEPLOYING TO VERCEL!
-    const dashboardUrl = 'https://cyber-mind-two.vercel.app';
-    
-    // Example: const dashboardUrl = 'https://cybermind-abc123.vercel.app';
-    
-    chrome.tabs.create({ url: dashboardUrl });
+    chrome.tabs.create({ url: chrome.runtime.getURL('dashboard.html') });
   });
 
   // Get current domain

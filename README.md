@@ -57,28 +57,17 @@ CyberMind is a **zero-click security extension** that:
 
 **Installation Steps:**
 
-1. **Install Node.js** (if not installed) - [Download here](https://nodejs.org/)
+1. Download **`CyberMind-Complete.zip`** from the link above
+2. **Extract the ZIP file** to a folder on your computer
+3. Open Chrome and go to `chrome://extensions/`
+4. Enable **"Developer mode"** (toggle in top-right corner)
+5. Click **"Load unpacked"** button
+6. Select the **`extension`** folder (from the extracted files)
+7. **Done!** 🎉
 
-2. **Start the server:**
-   ```bash
-   cd server
-   npm install
-   npm start
-   ```
+**Total time: 30 seconds** ⏱️
 
-3. **Install Chrome Extension:**
-   - Open Chrome → `chrome://extensions/`
-   - Enable **"Developer mode"** (top-right toggle)
-   - Click **"Load unpacked"**
-   - Select the **`extension`** folder
-   - Done! 🎉
-
-4. **View Dashboard:**
-   - Click the CyberMind extension icon
-   - Click **"📊 VIEW DASHBOARD"** button
-   - See all scans in real-time!
-
-📖 **[Detailed Setup Guide](SETUP.md)**
+**No server setup. No npm install. No terminal commands. Just install and use!**
 
 ---
 
@@ -86,7 +75,7 @@ CyberMind is a **zero-click security extension** that:
 - 🛡️ **CyberMind icon** appears in your Chrome toolbar
 - Visit any website → **automatic scan starts**
 - Click the icon to see **detailed results**
-- Click **"VIEW DASHBOARD"** to see **all scans with beautiful UI**
+- Click **"📊 VIEW DASHBOARD"** to see **all scans with beautiful UI**
 - Badge color shows threat level:
   - 🟢 **Green** = Safe / Trusted
   - 🟡 **Yellow** = Warning / Caution
@@ -131,7 +120,7 @@ CyberMind is a **zero-click security extension** that:
 **[📥 Download Extension Here](https://github.com/AbdurrahMan0070/CyberMind/releases/latest)**
 
 1. Click the link above
-2. Download **`cybermind-extension.zip`**
+2. Download **`CyberMind-Complete.zip`**
 3. **Extract the ZIP file** to a folder
 4. Open Chrome → `chrome://extensions/`
 5. Enable **"Developer mode"** (top-right toggle)
@@ -140,6 +129,8 @@ CyberMind is a **zero-click security extension** that:
 8. **Done!** 🎉
 
 **Total time: 30 seconds** ⏱️
+
+**No server. No npm. No terminal. Just install and browse!**
 
 ---
 
