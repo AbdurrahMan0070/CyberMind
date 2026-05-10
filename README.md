@@ -78,6 +78,18 @@ Badge changes color based on threat level
 - No manual action needed
 - Works in the background
 
+### **Multilingual Support** 🌍
+- **7 languages supported:**
+  - 🇺🇸 English
+  - 🇪🇸 Spanish (Español)
+  - 🇫🇷 French (Français)
+  - 🇩🇪 German (Deutsch)
+  - 🇮🇳 Hindi (हिंदी)
+  - 🇨🇳 Chinese Simplified (简体中文)
+  - 🇯🇵 Japanese (日本語)
+- **Automatic detection** - Uses your browser's language
+- **Global accessibility** - Use CyberMind in your native language!
+
 ### **Threat Detection**
 - Identifies malicious domains
 - Checks against trusted domain list
@@ -120,6 +132,21 @@ Badge changes color based on threat level
 - ✅ **No External Servers** - No backend required
 - ✅ **Open Source** - Inspect the code yourself
 - ✅ **Minimal Permissions** - Only what's necessary
+- ✅ **Multilingual** - Available in 7 languages worldwide
+
+---
+
+## ⚠️ Limitations
+
+Some websites may block or restrict this extension due to security policies:
+- **Chrome internal pages** (`chrome://`) - Cannot work (Chrome restriction)
+- **Banking websites** - May be blocked by Content Security Policy
+- **Government sites** - May have enhanced security restrictions
+- **Corporate intranets** - May be restricted by IT policies
+
+**This is normal!** The extension works on 95%+ of regular websites.
+
+📖 **[Read full limitations documentation](LIMITATIONS.md)**
 
 ---
 

@@ -1,0 +1,98 @@
+{
+  "extName": {
+    "message": "CyberMind",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Autonomous Cyber Intelligence — passive AI agent that scans every page for threats.",
+    "description": "Extension description"
+  },
+  "currentPage": {
+    "message": "Current Page",
+    "description": "Label for current page section"
+  },
+  "scanning": {
+    "message": "SCANNING",
+    "description": "Scanning status"
+  },
+  "clean": {
+    "message": "CLEAN",
+    "description": "Clean threat level"
+  },
+  "low": {
+    "message": "LOW",
+    "description": "Low threat level"
+  },
+  "medium": {
+    "message": "MEDIUM",
+    "description": "Medium threat level"
+  },
+  "high": {
+    "message": "HIGH",
+    "description": "High threat level"
+  },
+  "critical": {
+    "message": "⚠ CRITICAL",
+    "description": "Critical threat level"
+  },
+  "scanned": {
+    "message": "Scanned",
+    "description": "Total scanned label"
+  },
+  "warnings": {
+    "message": "Warnings",
+    "description": "Warnings label"
+  },
+  "threats": {
+    "message": "Threats",
+    "description": "Threats label"
+  },
+  "footer": {
+    "message": "CYBERMIND · AUTONOMOUS PROTECTION ACTIVE",
+    "description": "Footer status message"
+  },
+  "threatDetected": {
+    "message": "⚠ CyberMind Threat Detected",
+    "description": "Notification title for threats"
+  },
+  "trustedDomain": {
+    "message": "$DOMAIN$ is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.",
+    "description": "Message for trusted domains",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "google.com"
+      }
+    }
+  },
+  "domainAssessed": {
+    "message": "Domain $DOMAIN$ assessed as $SEVERITY$ risk. Standard web presence detected.",
+    "description": "Message for assessed domains",
+    "placeholders": {
+      "domain": {
+        "content": "$1",
+        "example": "example.com"
+      },
+      "severity": {
+        "content": "$2",
+        "example": "medium"
+      }
+    }
+  },
+  "noActionNeeded": {
+    "message": "Domain is trusted — no action needed",
+    "description": "Recommendation for trusted domains"
+  },
+  "keepBrowserUpdated": {
+    "message": "Keep browser updated",
+    "description": "Security recommendation"
+  },
+  "useDNSOverHTTPS": {
+    "message": "Use DNS-over-HTTPS",
+    "description": "Security recommendation"
+  },
+  "suspiciousPattern": {
+    "message": "Suspicious domain pattern detected",
+    "description": "Threat indicator"
+  }
+}

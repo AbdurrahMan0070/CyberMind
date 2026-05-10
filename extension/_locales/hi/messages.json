@@ -1,0 +1,62 @@
+{
+  "extName": {
+    "message": "CyberMind"
+  },
+  "extDescription": {
+    "message": "स्वायत्त साइबर इंटेलिजेंस — निष्क्रिय AI एजेंट जो खतरों के लिए हर पेज को स्कैन करता है।"
+  },
+  "currentPage": {
+    "message": "वर्तमान पृष्ठ"
+  },
+  "scanning": {
+    "message": "स्कैन हो रहा है"
+  },
+  "clean": {
+    "message": "साफ़"
+  },
+  "low": {
+    "message": "कम"
+  },
+  "medium": {
+    "message": "मध्यम"
+  },
+  "high": {
+    "message": "उच्च"
+  },
+  "critical": {
+    "message": "⚠ गंभीर"
+  },
+  "scanned": {
+    "message": "स्कैन किए गए"
+  },
+  "warnings": {
+    "message": "चेतावनियाँ"
+  },
+  "threats": {
+    "message": "खतरे"
+  },
+  "footer": {
+    "message": "CYBERMIND · स्वायत्त सुरक्षा सक्रिय"
+  },
+  "threatDetected": {
+    "message": "⚠ CyberMind खतरा पाया गया"
+  },
+  "trustedDomain": {
+    "message": "$DOMAIN$ एक अच्छी तरह से स्थापित, विश्व स्तर पर विश्वसनीय डोमेन है। कोई खतरा संकेतक नहीं मिला।"
+  },
+  "domainAssessed": {
+    "message": "डोमेन $DOMAIN$ को $SEVERITY$ जोखिम के रूप में मूल्यांकन किया गया। मानक वेब उपस्थिति का पता चला।"
+  },
+  "noActionNeeded": {
+    "message": "विश्वसनीय डोमेन — कोई कार्रवाई की आवश्यकता नहीं"
+  },
+  "keepBrowserUpdated": {
+    "message": "ब्राउज़र को अपडेट रखें"
+  },
+  "useDNSOverHTTPS": {
+    "message": "DNS-over-HTTPS का उपयोग करें"
+  },
+  "suspiciousPattern": {
+    "message": "संदिग्ध डोमेन पैटर्न का पता चला"
+  }
+}

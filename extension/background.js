@@ -38,9 +38,9 @@ function analyzeDomain(domain) {
     return {
       severity: 'clean',
       threatScore: Math.floor(Math.random() * 8) + 1,
-      summary: `${domain} is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.`,
+      summary: chrome.i18n.getMessage('trustedDomain', [domain]) || `${domain} is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.`,
       indicators: [],
-      recommendations: ['Domain is trusted — no action needed']
+      recommendations: [chrome.i18n.getMessage('noActionNeeded') || 'Domain is trusted — no action needed']
     };
   }
   
@@ -59,9 +59,12 @@ function analyzeDomain(domain) {
   return {
     severity,
     threatScore: scores[severity],
-    summary: `Domain ${domain} assessed as ${severity} risk. Standard web presence detected.`,
-    indicators: severity !== 'clean' && severity !== 'low' ? ['Suspicious domain pattern detected'] : [],
-    recommendations: ['Keep browser updated', 'Use DNS-over-HTTPS']
+    summary: chrome.i18n.getMessage('domainAssessed', [domain, severity]) || `Domain ${domain} assessed as ${severity} risk. Standard web presence detected.`,
+    indicators: severity !== 'clean' && severity !== 'low' ? [chrome.i18n.getMessage('suspiciousPattern') || 'Suspicious domain pattern detected'] : [],
+    recommendations: [
+      chrome.i18n.getMessage('keepBrowserUpdated') || 'Keep browser updated',
+      chrome.i18n.getMessage('useDNSOverHTTPS') || 'Use DNS-over-HTTPS'
+    ]
   };
 }
 
@@ -114,7 +117,7 @@ async function scan(payload, tabId) {
     chrome.notifications.create({
       type: 'basic',
       iconUrl: 'icon48.png',
-      title: '⚠ CyberMind Threat Detected',
+      title: chrome.i18n.getMessage('threatDetected') || '⚠ CyberMind Threat Detected',
       message: `${payload.domain}: ${result.summary.slice(0, 100)}`
     });
   }

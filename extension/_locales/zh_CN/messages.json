@@ -1,0 +1,62 @@
+{
+  "extName": {
+    "message": "CyberMind"
+  },
+  "extDescription": {
+    "message": "自主网络情报 — 被动AI代理，扫描每个页面以检测威胁。"
+  },
+  "currentPage": {
+    "message": "当前页面"
+  },
+  "scanning": {
+    "message": "扫描中"
+  },
+  "clean": {
+    "message": "安全"
+  },
+  "low": {
+    "message": "低"
+  },
+  "medium": {
+    "message": "中"
+  },
+  "high": {
+    "message": "高"
+  },
+  "critical": {
+    "message": "⚠ 严重"
+  },
+  "scanned": {
+    "message": "已扫描"
+  },
+  "warnings": {
+    "message": "警告"
+  },
+  "threats": {
+    "message": "威胁"
+  },
+  "footer": {
+    "message": "CYBERMIND · 自主保护已激活"
+  },
+  "threatDetected": {
+    "message": "⚠ CyberMind 检测到威胁"
+  },
+  "trustedDomain": {
+    "message": "$DOMAIN$ 是一个成熟的、全球信任的域名，具有强大的声誉信号。未发现威胁指标。"
+  },
+  "domainAssessed": {
+    "message": "域名 $DOMAIN$ 被评估为 $SEVERITY$ 风险。检测到标准网络存在。"
+  },
+  "noActionNeeded": {
+    "message": "可信域名 — 无需采取行动"
+  },
+  "keepBrowserUpdated": {
+    "message": "保持浏览器更新"
+  },
+  "useDNSOverHTTPS": {
+    "message": "使用DNS-over-HTTPS"
+  },
+  "suspiciousPattern": {
+    "message": "检测到可疑域名模式"
+  }
+}

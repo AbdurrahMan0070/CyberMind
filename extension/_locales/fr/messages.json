@@ -1,0 +1,62 @@
+{
+  "extName": {
+    "message": "CyberMind"
+  },
+  "extDescription": {
+    "message": "Intelligence Cybernétique Autonome — agent IA passif qui analyse chaque page pour détecter les menaces."
+  },
+  "currentPage": {
+    "message": "Page Actuelle"
+  },
+  "scanning": {
+    "message": "ANALYSE"
+  },
+  "clean": {
+    "message": "PROPRE"
+  },
+  "low": {
+    "message": "FAIBLE"
+  },
+  "medium": {
+    "message": "MOYEN"
+  },
+  "high": {
+    "message": "ÉLEVÉ"
+  },
+  "critical": {
+    "message": "⚠ CRITIQUE"
+  },
+  "scanned": {
+    "message": "Analysés"
+  },
+  "warnings": {
+    "message": "Avertissements"
+  },
+  "threats": {
+    "message": "Menaces"
+  },
+  "footer": {
+    "message": "CYBERMIND · PROTECTION AUTONOME ACTIVE"
+  },
+  "threatDetected": {
+    "message": "⚠ CyberMind Menace Détectée"
+  },
+  "trustedDomain": {
+    "message": "$DOMAIN$ est un domaine bien établi et mondialement fiable avec de solides signaux de réputation. Aucun indicateur de menace trouvé."
+  },
+  "domainAssessed": {
+    "message": "Domaine $DOMAIN$ évalué comme risque $SEVERITY$. Présence web standard détectée."
+  },
+  "noActionNeeded": {
+    "message": "Domaine fiable — aucune action nécessaire"
+  },
+  "keepBrowserUpdated": {
+    "message": "Maintenir le navigateur à jour"
+  },
+  "useDNSOverHTTPS": {
+    "message": "Utiliser DNS sur HTTPS"
+  },
+  "suspiciousPattern": {
+    "message": "Modèle de domaine suspect détecté"
+  }
+}

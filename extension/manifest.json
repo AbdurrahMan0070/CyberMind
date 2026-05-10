@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "CyberMind",
+  "name": "__MSG_extName__",
   "version": "1.0.0",
-  "description": "Autonomous Cyber Intelligence — passive AI agent that scans every page for threats.",
+  "description": "__MSG_extDescription__",
+  "default_locale": "en",
   "permissions": ["activeTab", "storage", "notifications", "tabs"],
   "host_permissions": ["<all_urls>"],
   "background": { "service_worker": "background.js" },

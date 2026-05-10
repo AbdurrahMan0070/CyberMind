@@ -1,0 +1,62 @@
+{
+  "extName": {
+    "message": "CyberMind"
+  },
+  "extDescription": {
+    "message": "Autonome Cyber-Intelligenz — passiver KI-Agent, der jede Seite auf Bedrohungen scannt."
+  },
+  "currentPage": {
+    "message": "Aktuelle Seite"
+  },
+  "scanning": {
+    "message": "SCANNEN"
+  },
+  "clean": {
+    "message": "SAUBER"
+  },
+  "low": {
+    "message": "NIEDRIG"
+  },
+  "medium": {
+    "message": "MITTEL"
+  },
+  "high": {
+    "message": "HOCH"
+  },
+  "critical": {
+    "message": "⚠ KRITISCH"
+  },
+  "scanned": {
+    "message": "Gescannt"
+  },
+  "warnings": {
+    "message": "Warnungen"
+  },
+  "threats": {
+    "message": "Bedrohungen"
+  },
+  "footer": {
+    "message": "CYBERMIND · AUTONOMER SCHUTZ AKTIV"
+  },
+  "threatDetected": {
+    "message": "⚠ CyberMind Bedrohung Erkannt"
+  },
+  "trustedDomain": {
+    "message": "$DOMAIN$ ist eine etablierte, weltweit vertrauenswürdige Domain mit starken Reputationssignalen. Keine Bedrohungsindikatoren gefunden."
+  },
+  "domainAssessed": {
+    "message": "Domain $DOMAIN$ als $SEVERITY$ Risiko bewertet. Standard-Webpräsenz erkannt."
+  },
+  "noActionNeeded": {
+    "message": "Vertrauenswürdige Domain — keine Aktion erforderlich"
+  },
+  "keepBrowserUpdated": {
+    "message": "Browser aktuell halten"
+  },
+  "useDNSOverHTTPS": {
+    "message": "DNS über HTTPS verwenden"
+  },
+  "suspiciousPattern": {
+    "message": "Verdächtiges Domain-Muster erkannt"
+  }
+}

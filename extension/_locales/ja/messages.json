@@ -1,0 +1,62 @@
+{
+  "extName": {
+    "message": "CyberMind"
+  },
+  "extDescription": {
+    "message": "自律型サイバーインテリジェンス — 脅威をスキャンするパッシブAIエージェント。"
+  },
+  "currentPage": {
+    "message": "現在のページ"
+  },
+  "scanning": {
+    "message": "スキャン中"
+  },
+  "clean": {
+    "message": "クリーン"
+  },
+  "low": {
+    "message": "低"
+  },
+  "medium": {
+    "message": "中"
+  },
+  "high": {
+    "message": "高"
+  },
+  "critical": {
+    "message": "⚠ 重大"
+  },
+  "scanned": {
+    "message": "スキャン済み"
+  },
+  "warnings": {
+    "message": "警告"
+  },
+  "threats": {
+    "message": "脅威"
+  },
+  "footer": {
+    "message": "CYBERMIND · 自律保護アクティブ"
+  },
+  "threatDetected": {
+    "message": "⚠ CyberMind 脅威を検出"
+  },
+  "trustedDomain": {
+    "message": "$DOMAIN$ は確立された、世界的に信頼されているドメインです。脅威指標は見つかりませんでした。"
+  },
+  "domainAssessed": {
+    "message": "ドメイン $DOMAIN$ は $SEVERITY$ リスクと評価されました。標準的なウェブプレゼンスが検出されました。"
+  },
+  "noActionNeeded": {
+    "message": "信頼できるドメイン — アクションは不要"
+  },
+  "keepBrowserUpdated": {
+    "message": "ブラウザを最新の状態に保つ"
+  },
+  "useDNSOverHTTPS": {
+    "message": "DNS-over-HTTPSを使用"
+  },
+  "suspiciousPattern": {
+    "message": "疑わしいドメインパターンを検出"
+  }
+}
