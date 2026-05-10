@@ -20,8 +20,40 @@ const TRUSTED_DOMAINS = [
   'cloudflare.com', 'stackoverflow.com', 'medium.com', 'openai.com', 'anthropic.com'
 ];
 
+// Test threat domains - ALWAYS marked as threats for demo purposes
+const THREAT_DOMAINS = {
+  // High threats
+  'malicious-site.com': { severity: 'high', score: 85, reason: 'Known phishing domain with multiple fraud reports' },
+  'phishing-test.com': { severity: 'high', score: 88, reason: 'Suspected phishing site mimicking banking services' },
+  'fake-bank.com': { severity: 'critical', score: 95, reason: 'CRITICAL: Confirmed phishing site targeting financial credentials' },
+  'malware-download.net': { severity: 'critical', score: 92, reason: 'CRITICAL: Known malware distribution site' },
+  'scam-site.org': { severity: 'high', score: 82, reason: 'Multiple scam reports and fraudulent activity detected' },
+  
+  // Medium threats
+  'suspicious-domain.com': { severity: 'medium', score: 55, reason: 'Suspicious domain pattern, recently registered' },
+  'untrusted-site.net': { severity: 'medium', score: 60, reason: 'Domain has suspicious SSL certificate' },
+  'sketchy-website.org': { severity: 'medium', score: 58, reason: 'Multiple warning indicators detected' },
+  'questionable-site.com': { severity: 'medium', score: 52, reason: 'Domain reputation score below threshold' },
+  
+  // Low threats
+  'new-domain.com': { severity: 'low', score: 25, reason: 'Recently registered domain, limited history' },
+  'unknown-site.net': { severity: 'low', score: 28, reason: 'Unknown domain with minimal web presence' }
+};
+
 function isTrusted(domain) {
   return TRUSTED_DOMAINS.some(t => domain === t || domain.endsWith('.' + t));
+}
+
+function isThreatDomain(domain) {
+  // Check exact match
+  if (THREAT_DOMAINS[domain]) return THREAT_DOMAINS[domain];
+  
+  // Check if domain ends with any threat domain (for subdomains)
+  for (const [threatDomain, info] of Object.entries(THREAT_DOMAINS)) {
+    if (domain.endsWith(threatDomain)) return info;
+  }
+  
+  return null;
 }
 
 function setBadge(tabId, state) {
@@ -41,6 +73,20 @@ function analyzeDomain(domain) {
       summary: chrome.i18n.getMessage('trustedDomain', [domain]) || `${domain} is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.`,
       indicators: [],
       recommendations: [chrome.i18n.getMessage('noActionNeeded') || 'Domain is trusted — no action needed']
+    };
+  }
+  
+  // Check if it's a known threat domain
+  const threatInfo = isThreatDomain(domain);
+  if (threatInfo) {
+    return {
+      severity: threatInfo.severity,
+      threatScore: threatInfo.score,
+      summary: `${threatInfo.severity.toUpperCase()} RISK: ${threatInfo.reason}`,
+      indicators: [threatInfo.reason],
+      recommendations: threatInfo.severity === 'critical' || threatInfo.severity === 'high' 
+        ? ['Do not enter credentials', 'Close this site immediately', 'Report to authorities']
+        : ['Proceed with caution', 'Do not share personal information', 'Verify site authenticity']
     };
   }
   
