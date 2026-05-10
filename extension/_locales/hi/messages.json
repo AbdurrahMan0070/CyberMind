@@ -42,10 +42,23 @@
     "message": "⚠ CyberMind खतरा पाया गया"
   },
   "trustedDomain": {
-    "message": "$DOMAIN$ एक अच्छी तरह से स्थापित, विश्व स्तर पर विश्वसनीय डोमेन है। कोई खतरा संकेतक नहीं मिला।"
+    "message": "$DOMAIN$ एक अच्छी तरह से स्थापित, विश्व स्तर पर विश्वसनीय डोमेन है। कोई खतरा संकेतक नहीं मिला।",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   },
   "domainAssessed": {
-    "message": "डोमेन $DOMAIN$ को $SEVERITY$ जोखिम के रूप में मूल्यांकन किया गया। मानक वेब उपस्थिति का पता चला।"
+    "message": "डोमेन $DOMAIN$ को $SEVERITY$ जोखिम के रूप में मूल्यांकन किया गया। मानक वेब उपस्थिति का पता चला।",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      },
+      "severity": {
+        "content": "$2"
+      }
+    }
   },
   "noActionNeeded": {
     "message": "विश्वसनीय डोमेन — कोई कार्रवाई की आवश्यकता नहीं"

@@ -42,10 +42,23 @@
     "message": "⚠ CyberMind 脅威を検出"
   },
   "trustedDomain": {
-    "message": "$DOMAIN$ は確立された、世界的に信頼されているドメインです。脅威指標は見つかりませんでした。"
+    "message": "$DOMAIN$ は確立された、世界的に信頼されているドメインです。脅威指標は見つかりませんでした。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      }
+    }
   },
   "domainAssessed": {
-    "message": "ドメイン $DOMAIN$ は $SEVERITY$ リスクと評価されました。標準的なウェブプレゼンスが検出されました。"
+    "message": "ドメイン $DOMAIN$ は $SEVERITY$ リスクと評価されました。標準的なウェブプレゼンスが検出されました。",
+    "placeholders": {
+      "domain": {
+        "content": "$1"
+      },
+      "severity": {
+        "content": "$2"
+      }
+    }
   },
   "noActionNeeded": {
     "message": "信頼できるドメイン — アクションは不要"
