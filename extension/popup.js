@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Dashboard button handler
   document.getElementById('dashboardBtn').addEventListener('click', function() {
     // ⚠️ CHANGE THIS AFTER DEPLOYING TO VERCEL!
-    const dashboardUrl = 'http://localhost:4000';
+    const dashboardUrl = 'https://cyber-mind-two.vercel.app';
+    
     // Example: const dashboardUrl = 'https://cybermind-abc123.vercel.app';
     
     chrome.tabs.create({ url: dashboardUrl });

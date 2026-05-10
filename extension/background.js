@@ -1,6 +1,5 @@
 // CyberMind Backend Configuration
-const BACKEND = 'http://localhost:4000'; // ⚠️ CHANGE THIS AFTER DEPLOYING TO VERCEL!
-
+const BACKEND = 'https://cyber-mind-two.vercel.app';
 // After deploying to Vercel, replace the URL above with your Vercel URL
 // Example: const BACKEND = 'https://cybermind-abc123.vercel.app';
 
