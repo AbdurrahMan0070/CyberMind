@@ -1,4 +1,9 @@
-const BACKEND = 'http://localhost:4000'; // Backend server
+// CyberMind Backend Configuration
+const BACKEND = 'http://localhost:4000'; // ⚠️ CHANGE THIS AFTER DEPLOYING TO VERCEL!
+
+// After deploying to Vercel, replace the URL above with your Vercel URL
+// Example: const BACKEND = 'https://cybermind-abc123.vercel.app';
+
 const cache = new Map();
 const CACHE_TTL = 60 * 60 * 1000;
 

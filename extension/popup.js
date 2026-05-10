@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Dashboard button handler
   document.getElementById('dashboardBtn').addEventListener('click', function() {
-    chrome.tabs.create({ url: 'http://localhost:4000' });
+    // ⚠️ CHANGE THIS AFTER DEPLOYING TO VERCEL!
+    const dashboardUrl = 'http://localhost:4000';
+    // Example: const dashboardUrl = 'https://cybermind-abc123.vercel.app';
+    
+    chrome.tabs.create({ url: dashboardUrl });
   });
 
   // Get current domain

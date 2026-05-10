@@ -427,10 +427,13 @@
   </div>
 
   <script>
+    // ⚠️ CHANGE THIS AFTER DEPLOYING TO VERCEL!
+    const API_URL = window.location.origin; // Automatically uses current domain
+    
     async function loadData() {
       try {
         // Load stats
-        const statsRes = await fetch('http://localhost:4000/api/stats');
+        const statsRes = await fetch(`${API_URL}/api/stats`);
         const stats = await statsRes.json();
         
         document.getElementById('stat-total').textContent = stats.total;
@@ -439,7 +442,7 @@
         document.getElementById('stat-threats').textContent = stats.high + stats.critical;
 
         // Load scans
-        const scansRes = await fetch('http://localhost:4000/api/scans');
+        const scansRes = await fetch(`${API_URL}/api/scans`);
         const scans = await scansRes.json();
         
         const scansList = document.getElementById('scans-list');
