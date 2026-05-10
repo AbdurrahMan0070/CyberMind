@@ -3,12 +3,12 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // In-memory storage for scans
 let scans = [];
@@ -123,3 +123,6 @@ app.listen(PORT, () => {
   console.log(`📊 Dashboard: http://localhost:${PORT}`);
   console.log(`🔌 API: http://localhost:${PORT}/api`);
 });
+
+// Export for Vercel
+module.exports = app;
