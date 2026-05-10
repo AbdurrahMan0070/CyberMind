@@ -613,6 +613,83 @@
   </div>
   
   <script>
+    // Initialize with demo data if no scans exist
+    function initializeDemoData() {
+      chrome.storage.local.get('scans', (data) => {
+        if (!data.scans || data.scans.length === 0) {
+          const demoScans = [
+            {
+              scanId: 'demo_1',
+              domain: 'google.com',
+              url: 'https://google.com',
+              title: 'Google',
+              pageType: 'Search Engine',
+              timestamp: Date.now() - 300000,
+              severity: 'clean',
+              summary: 'Google.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
+              agents: { osint: { severity: 'clean', threatScore: 2, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
+            },
+            {
+              scanId: 'demo_2',
+              domain: 'youtube.com',
+              url: 'https://youtube.com',
+              title: 'YouTube',
+              pageType: 'Video Platform',
+              timestamp: Date.now() - 600000,
+              severity: 'clean',
+              summary: 'YouTube.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
+              agents: { osint: { severity: 'clean', threatScore: 1, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
+            },
+            {
+              scanId: 'demo_3',
+              domain: 'github.com',
+              url: 'https://github.com',
+              title: 'GitHub',
+              pageType: 'Development Platform',
+              timestamp: Date.now() - 900000,
+              severity: 'clean',
+              summary: 'GitHub.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
+              agents: { osint: { severity: 'clean', threatScore: 3, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
+            },
+            {
+              scanId: 'demo_4',
+              domain: 'example-suspicious.com',
+              url: 'https://example-suspicious.com',
+              title: 'Suspicious Site',
+              pageType: 'Unknown',
+              timestamp: Date.now() - 1200000,
+              severity: 'medium',
+              summary: 'Domain example-suspicious.com assessed as medium risk. Suspicious domain pattern detected.',
+              agents: { osint: { severity: 'medium', threatScore: 55, indicators: ['Suspicious domain pattern detected'], recommendations: ['Keep browser updated', 'Use DNS-over-HTTPS'] } }
+            },
+            {
+              scanId: 'demo_5',
+              domain: 'facebook.com',
+              url: 'https://facebook.com',
+              title: 'Facebook',
+              pageType: 'Social Media',
+              timestamp: Date.now() - 1500000,
+              severity: 'clean',
+              summary: 'Facebook.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
+              agents: { osint: { severity: 'clean', threatScore: 4, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
+            },
+            {
+              scanId: 'demo_6',
+              domain: 'twitter.com',
+              url: 'https://twitter.com',
+              title: 'Twitter',
+              pageType: 'Social Media',
+              timestamp: Date.now() - 1800000,
+              severity: 'clean',
+              summary: 'Twitter.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
+              agents: { osint: { severity: 'clean', threatScore: 5, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
+            }
+          ];
+          chrome.storage.local.set({ scans: demoScans });
+        }
+      });
+    }
+    
     function switchTab(tabName) {
       // Hide all tabs
       document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -754,8 +831,9 @@
       return `${Math.floor(seconds / 86400)}d ago`;
     }
     
-    // Load overview on page load
-    loadOverview();
+    // Initialize demo data and load overview on page load
+    initializeDemoData();
+    setTimeout(loadOverview, 100);
     
     // Auto-refresh every 5 seconds
     setInterval(() => {
