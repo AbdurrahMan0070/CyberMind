@@ -863,7 +863,11 @@
     
     // Initialize demo data and load overview on page load
     initializeDemoData();
-    setTimeout(loadOverview, 100);
+    setTimeout(() => {
+      loadOverview();
+      loadAgentFeed();
+      loadScanHistory();
+    }, 200);
     
     // Auto-refresh every 5 seconds
     setInterval(() => {
