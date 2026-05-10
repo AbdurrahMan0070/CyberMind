@@ -697,7 +697,15 @@
       
       // Show selected tab
       document.getElementById(tabName).classList.add('active');
-      event.target.classList.add('active');
+      
+      // Find and activate the clicked tab
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => {
+        if (tab.textContent.includes('Overview') && tabName === 'overview') tab.classList.add('active');
+        if (tab.textContent.includes('Agent Feed') && tabName === 'agent-feed') tab.classList.add('active');
+        if (tab.textContent.includes('Scan History') && tabName === 'scan-history') tab.classList.add('active');
+        if (tab.textContent.includes('Test a Domain') && tabName === 'test-domain') tab.classList.add('active');
+      });
       
       // Load data for the tab
       if (tabName === 'overview') loadOverview();
@@ -769,9 +777,20 @@
       chrome.storage.local.get('scans', (data) => {
         const scans = data.scans || [];
         
-        if (scans.length === 0) return;
+        const feedList = document.getElementById('agent-feed-list');
         
-        document.getElementById('agent-feed-list').innerHTML = scans.slice(0, 20).map(s => {
+        if (scans.length === 0) {
+          feedList.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon">🤖</div>
+              <div class="empty-text">No agent activity yet</div>
+              <div class="empty-subtext">Agent scans will appear here in real-time</div>
+            </div>
+          `;
+          return;
+        }
+        
+        feedList.innerHTML = scans.slice(0, 20).map(s => {
           const timeAgo = getTimeAgo(s.timestamp);
           const badgeClass = s.severity === 'clean' || s.severity === 'low' ? 'badge-green' : 
                              s.severity === 'medium' ? 'badge-yellow' : 'badge-red';
@@ -780,7 +799,7 @@
             <div class="list-item">
               <div class="list-item-header">
                 <div class="list-item-title">${s.domain}</div>
-                <div class="list-item-badge ${badgeClass}">${s.severity}</div>
+                <div class="list-item-badge ${badgeClass}">${s.severity.toUpperCase()}</div>
               </div>
               <div class="list-item-text">${s.summary}</div>
               <div class="list-item-meta">
@@ -797,9 +816,20 @@
       chrome.storage.local.get('scans', (data) => {
         const scans = data.scans || [];
         
-        if (scans.length === 0) return;
+        const historyList = document.getElementById('scan-history-list');
         
-        document.getElementById('scan-history-list').innerHTML = scans.map(s => {
+        if (scans.length === 0) {
+          historyList.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon">📋</div>
+              <div class="empty-text">No scans yet</div>
+              <div class="empty-subtext">Visit some websites to see scans here</div>
+            </div>
+          `;
+          return;
+        }
+        
+        historyList.innerHTML = scans.map(s => {
           const timeAgo = getTimeAgo(s.timestamp);
           const badgeClass = s.severity === 'clean' || s.severity === 'low' ? 'badge-green' : 
                              s.severity === 'medium' ? 'badge-yellow' : 'badge-red';
@@ -808,7 +838,7 @@
             <div class="list-item">
               <div class="list-item-header">
                 <div class="list-item-title">${s.domain}</div>
-                <div class="list-item-badge ${badgeClass}">${s.severity}</div>
+                <div class="list-item-badge ${badgeClass}">${s.severity.toUpperCase()}</div>
               </div>
               <div class="list-item-text"><strong>${s.title}</strong></div>
               <div class="list-item-text">${s.summary}</div>
