@@ -1,4 +1,4 @@
-const BACKEND = null; // Standalone mode - no backend needed
+const BACKEND = 'http://localhost:4000'; // Backend server
 const cache = new Map();
 const CACHE_TTL = 60 * 60 * 1000;
 
@@ -79,15 +79,42 @@ async function scan(payload, tabId) {
 
   setBadge(tabId, 'scanning');
 
-  // Simulate brief analysis delay
-  await new Promise(resolve => setTimeout(resolve, 500));
+  try {
+    // Try backend first
+    const response = await fetch(`${BACKEND}/api/scan`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
 
+    if (response.ok) {
+      const result = await response.json();
+      cache.set(key, { severity: result.severity, ts: Date.now() });
+      setBadge(tabId, result.severity);
+
+      // Show notification for high threats
+      if (['high','critical'].includes(result.severity)) {
+        chrome.notifications.create({
+          type: 'basic',
+          iconUrl: 'icon48.png',
+          title: chrome.i18n.getMessage('threatDetected') || '⚠ CyberMind Threat Detected',
+          message: `${payload.domain}: ${result.summary.slice(0, 100)}`
+        });
+      }
+      return;
+    }
+  } catch (error) {
+    console.log('Backend unavailable, using local analysis');
+  }
+
+  // Fallback to local analysis
+  await new Promise(resolve => setTimeout(resolve, 500));
   const result = analyzeDomain(payload.domain);
   
   cache.set(key, { severity: result.severity, ts: Date.now() });
   setBadge(tabId, result.severity);
 
-  // Store in local storage
+  // Store in local storage as backup
   chrome.storage.local.get('scans', (data) => {
     const stored = data.scans || [];
     stored.unshift({
@@ -112,7 +139,6 @@ async function scan(payload, tabId) {
     chrome.storage.local.set({ scans: stored.slice(0, 100) });
   });
 
-  // Show notification for high threats
   if (['high','critical'].includes(result.severity)) {
     chrome.notifications.create({
       type: 'basic',

@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     el.textContent = chrome.i18n.getMessage(key) || el.textContent;
   });
 
+  // Dashboard button handler
+  document.getElementById('dashboardBtn').addEventListener('click', function() {
+    chrome.tabs.create({ url: 'http://localhost:4000' });
+  });
+
   // Get current domain
   chrome.tabs.query({active:true, currentWindow:true}, function(tabs) {
     try { 

@@ -55,19 +55,38 @@ CyberMind is a **zero-click security extension** that:
 
 **[📥 Download Extension Here](https://github.com/AbdurrahMan0070/CyberMind/releases/latest)**
 
-1. Click the link above
-2. Download **`cybermind-extension.zip`**
-3. **Extract the ZIP file** to a folder
-4. Open Chrome → `chrome://extensions/`
-5. Enable **"Developer mode"** (top-right toggle)
-6. Click **"Load unpacked"**
-7. Select the **`extension`** folder (from extracted files)
-8. **Done!** 🎉
+**Installation Steps:**
+
+1. **Install Node.js** (if not installed) - [Download here](https://nodejs.org/)
+
+2. **Start the server:**
+   ```bash
+   cd server
+   npm install
+   npm start
+   ```
+
+3. **Install Chrome Extension:**
+   - Open Chrome → `chrome://extensions/`
+   - Enable **"Developer mode"** (top-right toggle)
+   - Click **"Load unpacked"**
+   - Select the **`extension`** folder
+   - Done! 🎉
+
+4. **View Dashboard:**
+   - Click the CyberMind extension icon
+   - Click **"📊 VIEW DASHBOARD"** button
+   - See all scans in real-time!
+
+📖 **[Detailed Setup Guide](SETUP.md)**
+
+---
 
 ### **After Installing:**
 - 🛡️ **CyberMind icon** appears in your Chrome toolbar
 - Visit any website → **automatic scan starts**
 - Click the icon to see **detailed results**
+- Click **"VIEW DASHBOARD"** to see **all scans with beautiful UI**
 - Badge color shows threat level:
   - 🟢 **Green** = Safe / Trusted
   - 🟡 **Yellow** = Warning / Caution
