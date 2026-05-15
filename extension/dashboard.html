@@ -405,10 +405,10 @@
   
   <!-- Navigation Tabs -->
   <div class="nav-tabs">
-    <div class="tab active" onclick="switchTab('overview')">📊 Overview</div>
-    <div class="tab" onclick="switchTab('agent-feed')">🤖 Agent Feed</div>
-    <div class="tab" onclick="switchTab('scan-history')">📜 Scan History</div>
-    <div class="tab" onclick="switchTab('test-domain')">🔍 Test a Domain</div>
+    <div class="tab active" data-tab="overview">📊 Overview</div>
+    <div class="tab" data-tab="agent-feed">🤖 Agent Feed</div>
+    <div class="tab" data-tab="scan-history">📜 Scan History</div>
+    <div class="tab" data-tab="test-domain">🔍 Test a Domain</div>
   </div>
   
   <!-- Main Content -->
@@ -613,22 +613,57 @@
   </div>
   
   <script>
-    // Tab switching function - must be in global scope for onclick handlers
+    // Add event listeners to tabs when DOM loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Attach click handlers to all tabs
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+          const tabName = this.getAttribute('data-tab');
+          switchTab(tabName);
+        });
+      });
+      
+      // Initialize demo data and load overview
+      initializeDemoData();
+      setTimeout(() => {
+        loadOverview();
+        loadAgentFeed();
+        loadScanHistory();
+      }, 200);
+      
+      // Auto-refresh every 5 seconds
+      setInterval(() => {
+        const activeTab = document.querySelector('.tab-content.active');
+        if (activeTab) {
+          const activeTabId = activeTab.id;
+          if (activeTabId === 'overview') loadOverview();
+          else if (activeTabId === 'agent-feed') loadAgentFeed();
+          else if (activeTabId === 'scan-history') loadScanHistory();
+        }
+      }, 5000);
+    });
+    
+    // Tab switching function
     function switchTab(tabName) {
-      // Hide all tabs
+      console.log('Switching to tab:', tabName);
+      
+      // Hide all tab contents
       document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      
+      // Remove active class from all tabs
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       
-      // Show selected tab
-      document.getElementById(tabName).classList.add('active');
+      // Show selected tab content
+      const selectedContent = document.getElementById(tabName);
+      if (selectedContent) {
+        selectedContent.classList.add('active');
+      }
       
-      // Find and activate the clicked tab
-      const tabs = document.querySelectorAll('.tab');
-      tabs.forEach(tab => {
-        if (tab.textContent.includes('Overview') && tabName === 'overview') tab.classList.add('active');
-        if (tab.textContent.includes('Agent Feed') && tabName === 'agent-feed') tab.classList.add('active');
-        if (tab.textContent.includes('Scan History') && tabName === 'scan-history') tab.classList.add('active');
-        if (tab.textContent.includes('Test a Domain') && tabName === 'test-domain') tab.classList.add('active');
+      // Activate the clicked tab
+      document.querySelectorAll('.tab').forEach(tab => {
+        if (tab.getAttribute('data-tab') === tabName) {
+          tab.classList.add('active');
+        }
       });
       
       // Load data for the tab
@@ -861,22 +896,6 @@
       if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
       return `${Math.floor(seconds / 86400)}d ago`;
     }
-    
-    // Initialize demo data and load overview on page load
-    initializeDemoData();
-    setTimeout(() => {
-      loadOverview();
-      loadAgentFeed();
-      loadScanHistory();
-    }, 200);
-    
-    // Auto-refresh every 5 seconds
-    setInterval(() => {
-      const activeTab = document.querySelector('.tab-content.active').id;
-      if (activeTab === 'overview') loadOverview();
-      else if (activeTab === 'agent-feed') loadAgentFeed();
-      else if (activeTab === 'scan-history') loadScanHistory();
-    }, 5000);
   </script>
 </body>
 </html>
