@@ -172,6 +172,12 @@ Badge changes color based on threat level
 - No manual action needed
 - Works in the background
 
+### **Visual Workflow** 🔄
+- **n8n-style workflow visualization** in Agent Feed tab
+- Shows how agents analyze and verify threats
+- Real-time visual representation of scan process
+- Clean, intuitive flow from source to verdict
+
 ### **Multilingual Support** 🌍
 - **7 languages supported:**
   - 🇺🇸 English
