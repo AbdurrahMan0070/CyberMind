@@ -5,33 +5,68 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{width:320px;background:#0f1117;color:#d1daf5;font-family:'Inter',sans-serif;border:1px solid #2a3350}
-.header{background:#161b27;padding:16px 18px;border-bottom:1px solid #2a3350;display:flex;align-items:center;gap:12px}
-.logo-box{width:32px;height:32px;background:#4dd9e0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#0f1117;font-size:14px}
-.logo-name{font-size:15px;font-weight:700;letter-spacing:0.3px}
+body{width:420px;min-height:500px;max-height:600px;background:#0f1117;color:#d1daf5;font-family:'Inter',sans-serif;border:1px solid #2a3350;overflow:hidden}
+.header{background:#161b27;padding:12px 16px;border-bottom:1px solid #2a3350;display:flex;align-items:center;gap:12px}
+.logo-box{width:28px;height:28px;background:#4dd9e0;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#0f1117;font-size:12px}
+.logo-name{font-size:14px;font-weight:700;letter-spacing:0.3px}
 .dot{width:8px;height:8px;border-radius:50%;margin-left:auto}
 .dot-green{background:#4ade80;box-shadow:0 0 8px #4ade80;animation:p 2s infinite}
 .dot-yellow{background:#fbbf24;box-shadow:0 0 8px #fbbf24}
 .dot-red{background:#f87171;box-shadow:0 0 8px #f87171;animation:p .8s infinite}
-.dot-gray{background:#4a5a7a}
 @keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
-.row{padding:16px 18px;border-bottom:1px solid #2a3350}
-.label{font-size:10px;color:#4a5a7a;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;font-weight:600}
-.domain{font-family:'JetBrains Mono',monospace;font-size:12px;color:#4dd9e0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-top:8px;letter-spacing:.5px}
+
+/* Tabs */
+.tabs{display:flex;background:#161b27;border-bottom:1px solid #2a3350;padding:0 8px}
+.tab{padding:10px 12px;font-size:11px;font-weight:600;color:#64748b;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;user-select:none;flex:1;text-align:center}
+.tab:hover{color:#94a3b8;background:rgba(255,255,255,0.02)}
+.tab.active{color:#4dd9e0;border-bottom-color:#4dd9e0;background:rgba(77,217,224,0.05)}
+
+/* Tab Content */
+.tab-content{display:none;height:440px;overflow-y:auto}
+.tab-content.active{display:block}
+.tab-content::-webkit-scrollbar{width:6px}
+.tab-content::-webkit-scrollbar-track{background:#161b27}
+.tab-content::-webkit-scrollbar-thumb{background:#2a3350;border-radius:3px}
+.tab-content::-webkit-scrollbar-thumb:hover{background:#3a4360}
+
+/* Overview Tab */
+.row{padding:12px 16px;border-bottom:1px solid #2a3350}
+.label{font-size:9px;color:#4a5a7a;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
+.domain{font-family:'JetBrains Mono',monospace;font-size:11px;color:#4dd9e0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{display:inline-block;padding:3px 8px;border-radius:12px;font-size:9px;font-weight:700;margin-top:6px;letter-spacing:.5px}
 .b-clean{background:rgba(74,222,128,.15);color:#4ade80;border:1px solid rgba(74,222,128,.35)}
 .b-medium{background:rgba(251,191,36,.15);color:#fbbf24;border:1px solid rgba(251,191,36,.35)}
 .b-high,.b-critical{background:rgba(248,113,113,.15);color:#f87171;border:1px solid rgba(248,113,113,.35)}
 .b-scanning{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.35)}
-.stats{display:grid;grid-template-columns:1fr 1fr 1fr;padding:16px 18px;gap:8px;border-bottom:1px solid #2a3350}
-.stat{text-align:center;padding:8px 0}
-.stat-n{font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1}
-.stat-l{font-size:10px;color:#4a5a7a;letter-spacing:1px;margin-top:6px;font-weight:500}
-.teal{color:#4dd9e0}.red{color:#f87171}.green{color:#4ade80}
-.btn{display:block;width:100%;padding:16px;background:#161b27;border:none;border-top:1px solid #2a3350;color:#4dd9e0;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:center}
-.btn:hover{background:#1c2333;transform:translateY(-1px);box-shadow:0 4px 12px rgba(77,217,224,0.2)}
-.btn:active{transform:translateY(0)}
-.footer{padding:10px 18px;font-size:9px;color:#2a3350;text-align:center;letter-spacing:1.5px;font-weight:600}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 16px;gap:8px;border-bottom:1px solid #2a3350}
+.stat{text-align:center;padding:6px 0}
+.stat-n{font-size:20px;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1}
+.stat-l{font-size:9px;color:#4a5a7a;letter-spacing:1px;margin-top:4px;font-weight:500}
+.teal{color:#4dd9e0}.red{color:#f87171}.green{color:#4ade80}.yellow{color:#fbbf24}
+
+/* List Items */
+.list-item{padding:12px 16px;border-bottom:1px solid #2a3350;font-size:11px}
+.list-item:hover{background:rgba(255,255,255,0.02)}
+.list-item-title{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:#4dd9e0;margin-bottom:4px}
+.list-item-text{font-size:10px;color:#94a3b8;margin-bottom:6px;line-height:1.4}
+.list-item-meta{display:flex;gap:12px;font-size:9px;color:#64748b}
+.list-item-badge{padding:2px 6px;border-radius:8px;font-size:8px;font-weight:700;text-transform:uppercase;display:inline-block;margin-bottom:4px}
+.badge-green{background:rgba(74,222,128,.15);color:#4ade80}
+.badge-yellow{background:rgba(251,191,36,.15);color:#fbbf24}
+.badge-red{background:rgba(248,113,113,.15);color:#f87171}
+
+/* Empty State */
+.empty-state{text-align:center;padding:40px 20px;color:#64748b}
+.empty-icon{font-size:32px;margin-bottom:12px;opacity:0.3}
+.empty-text{font-size:12px;font-weight:600;margin-bottom:6px}
+.empty-subtext{font-size:10px;color:#475569}
+
+/* Test Domain */
+.test-section{padding:16px}
+.test-input{width:100%;padding:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#e2e8f0;font-size:12px;font-family:'JetBrains Mono',monospace;margin-bottom:10px}
+.test-btn{width:100%;padding:10px;background:rgba(77,217,224,0.2);border:1px solid rgba(77,217,224,0.3);border-radius:6px;color:#4dd9e0;font-weight:600;cursor:pointer;font-size:11px;transition:all .2s}
+.test-btn:hover{background:rgba(77,217,224,0.3)}
+.test-result{margin-top:12px}
 </style>
 </head>
 <body>
@@ -43,21 +78,60 @@ body{width:320px;background:#0f1117;color:#d1daf5;font-family:'Inter',sans-serif
   <div class="dot dot-green" id="dot"></div>
 </div>
 
-<div class="row">
-  <div class="label" data-i18n="currentPage">Current Page</div>
-  <div class="domain" id="domain">Loading...</div>
-  <div class="badge b-scanning" id="badge" data-i18n="scanning">SCANNING</div>
+<!-- Navigation Tabs -->
+<div class="tabs">
+  <div class="tab active" data-tab="overview">📊 Overview</div>
+  <div class="tab" data-tab="agent-feed">🤖 Agents</div>
+  <div class="tab" data-tab="scan-history">📜 History</div>
+  <div class="tab" data-tab="test-domain">🔍 Test</div>
 </div>
 
-<div class="stats">
-  <div class="stat"><div class="stat-n teal" id="total">0</div><div class="stat-l" data-i18n="scanned">Scanned</div></div>
-  <div class="stat"><div class="stat-n" style="color:#fbbf24" id="warns">0</div><div class="stat-l" data-i18n="warnings">Warnings</div></div>
-  <div class="stat"><div class="stat-n red" id="threats">0</div><div class="stat-l" data-i18n="threats">Threats</div></div>
+<!-- Overview Tab -->
+<div id="overview" class="tab-content active">
+  <div class="row">
+    <div class="label" data-i18n="currentPage">Current Page</div>
+    <div class="domain" id="domain">Loading...</div>
+    <div class="badge b-scanning" id="badge" data-i18n="scanning">SCANNING</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n teal" id="total">0</div><div class="stat-l" data-i18n="scanned">Scanned</div></div>
+    <div class="stat"><div class="stat-n yellow" id="warns">0</div><div class="stat-l" data-i18n="warnings">Warnings</div></div>
+    <div class="stat"><div class="stat-n red" id="threats">0</div><div class="stat-l" data-i18n="threats">Threats</div></div>
+  </div>
 </div>
 
-<div class="footer" data-i18n="footer">CYBERMIND · AUTONOMOUS PROTECTION ACTIVE</div>
+<!-- Agent Feed Tab -->
+<div id="agent-feed" class="tab-content">
+  <div id="agent-feed-list">
+    <div class="empty-state">
+      <div class="empty-icon">🤖</div>
+      <div class="empty-text">No scans yet</div>
+      <div class="empty-subtext">Visit websites to see activity</div>
+    </div>
+  </div>
+</div>
 
-<button class="btn" id="dashboardBtn">📊 VIEW DASHBOARD</button>
+<!-- Scan History Tab -->
+<div id="scan-history" class="tab-content">
+  <div id="scan-history-list">
+    <div class="empty-state">
+      <div class="empty-icon">📋</div>
+      <div class="empty-text">No scans yet</div>
+      <div class="empty-subtext">Visit websites to see scans</div>
+    </div>
+  </div>
+</div>
+
+<!-- Test Domain Tab -->
+<div id="test-domain" class="tab-content">
+  <div class="test-section">
+    <div class="label">Test a Domain Manually</div>
+    <input type="text" id="test-domain-input" class="test-input" placeholder="example.com">
+    <button id="test-domain-btn" class="test-btn">Analyze Domain</button>
+    <div id="test-result" class="test-result"></div>
+  </div>
+</div>
 
 <script src="popup.js"></script>
 </body>

@@ -100,15 +100,18 @@
       cursor: pointer;
       border-bottom: 2px solid transparent;
       transition: all 0.2s;
+      user-select: none;
     }
     
     .tab:hover {
       color: #94a3b8;
+      background: rgba(255, 255, 255, 0.02);
     }
     
     .tab.active {
       color: #4dd9e0;
       border-bottom-color: #4dd9e0;
+      background: rgba(77, 217, 224, 0.05);
     }
     
     /* Main Content */
@@ -604,9 +607,10 @@
           <span class="section-title">Test a Domain Manually</span>
         </div>
         <div class="section-content">
-          <p style="margin-bottom:20px;color:#94a3b8;">Enter a domain to analyze it manually (coming soon in future version)</p>
-          <input type="text" placeholder="example.com" style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#e2e8f0;font-size:14px;font-family:'JetBrains Mono',monospace;" disabled>
-          <button style="margin-top:16px;padding:12px 24px;background:rgba(77,217,224,0.2);border:1px solid rgba(77,217,224,0.3);border-radius:8px;color:#4dd9e0;font-weight:600;cursor:not-allowed;opacity:0.5;" disabled>Analyze Domain</button>
+          <p style="margin-bottom:20px;color:#94a3b8;">Enter a domain to analyze it manually</p>
+          <input type="text" id="test-domain-input" placeholder="example.com" style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#e2e8f0;font-size:14px;font-family:'JetBrains Mono',monospace;">
+          <button id="test-domain-btn" style="margin-top:16px;padding:12px 24px;background:rgba(77,217,224,0.2);border:1px solid rgba(77,217,224,0.3);border-radius:8px;color:#4dd9e0;font-weight:600;cursor:pointer;transition:all 0.2s;">Analyze Domain</button>
+          <div id="test-result" style="margin-top:20px;"></div>
         </div>
       </div>
     </div>
@@ -615,23 +619,23 @@
   <script>
     // Add event listeners to tabs when DOM loads
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('Dashboard loaded - initializing...');
+      
       // Attach click handlers to all tabs
       document.querySelectorAll('.tab').forEach(tab => {
         tab.addEventListener('click', function() {
           const tabName = this.getAttribute('data-tab');
+          console.log('Tab clicked:', tabName);
           switchTab(tabName);
         });
       });
       
-      // Initialize demo data and load overview
-      initializeDemoData();
-      setTimeout(() => {
-        loadOverview();
-        loadAgentFeed();
-        loadScanHistory();
-      }, 200);
+      // Load real data immediately (no demo data)
+      loadOverview();
+      loadAgentFeed();
+      loadScanHistory();
       
-      // Auto-refresh every 5 seconds
+      // Auto-refresh every 3 seconds for live updates
       setInterval(() => {
         const activeTab = document.querySelector('.tab-content.active');
         if (activeTab) {
@@ -640,7 +644,93 @@
           else if (activeTabId === 'agent-feed') loadAgentFeed();
           else if (activeTabId === 'scan-history') loadScanHistory();
         }
-      }, 5000);
+      }, 3000);
+      
+      // Test domain functionality
+      const testBtn = document.getElementById('test-domain-btn');
+      const testInput = document.getElementById('test-domain-input');
+      const testResult = document.getElementById('test-result');
+      
+      if (testBtn) {
+        testBtn.addEventListener('click', function() {
+          const domain = testInput.value.trim();
+          
+          if (!domain) {
+            testResult.innerHTML = `
+              <div class="list-item" style="border-color:rgba(251,191,36,0.3);">
+                <div class="list-item-text" style="color:#fbbf24;">⚠️ Please enter a domain name</div>
+              </div>
+            `;
+            return;
+          }
+          
+          // Show loading state
+          testResult.innerHTML = `
+            <div class="list-item">
+              <div class="list-item-text" style="color:#4dd9e0;">🔄 Analyzing ${domain}...</div>
+            </div>
+          `;
+          
+          // Create a temporary tab to scan the domain
+          chrome.tabs.create({ url: 'https://' + domain, active: false }, (tab) => {
+            // Wait for scan to complete
+            setTimeout(() => {
+              // Get the scan result
+              chrome.storage.local.get('scans', (data) => {
+                const scans = data.scans || [];
+                const scan = scans.find(s => s.domain === domain || s.domain.includes(domain));
+                
+                if (scan) {
+                  const badgeClass = scan.severity === 'clean' || scan.severity === 'low' ? 'badge-green' : 
+                                     scan.severity === 'medium' ? 'badge-yellow' : 'badge-red';
+                  
+                  testResult.innerHTML = `
+                    <div class="list-item" style="border-color:rgba(74,222,128,0.3);">
+                      <div class="list-item-header">
+                        <div class="list-item-title">${scan.domain}</div>
+                        <div class="list-item-badge ${badgeClass}">${scan.severity.toUpperCase()}</div>
+                      </div>
+                      <div class="list-item-text">${scan.summary}</div>
+                      <div class="list-item-meta">
+                        <span>🎯 Threat Score: ${scan.agents?.osint?.threatScore || 0}/100</span>
+                      </div>
+                    </div>
+                    <div style="margin-top:12px;padding:12px;background:rgba(77,217,224,0.1);border:1px solid rgba(77,217,224,0.2);border-radius:8px;font-size:12px;color:#94a3b8;">
+                      ✅ Real scan completed. Check "Scan History" tab for details.
+                    </div>
+                  `;
+                  
+                  // Close the temporary tab
+                  chrome.tabs.remove(tab.id);
+                  
+                  // Refresh all tabs
+                  loadOverview();
+                  loadAgentFeed();
+                  loadScanHistory();
+                } else {
+                  testResult.innerHTML = `
+                    <div class="list-item" style="border-color:rgba(251,191,36,0.3);">
+                      <div class="list-item-text" style="color:#fbbf24;">⚠️ Scan in progress... Please wait a moment and check Scan History.</div>
+                    </div>
+                  `;
+                  
+                  // Close the temporary tab
+                  chrome.tabs.remove(tab.id);
+                }
+              });
+            }, 2000);
+          });
+        });
+        
+        // Allow Enter key to trigger analysis
+        testInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            testBtn.click();
+          }
+        });
+      }
+      
+      console.log('Dashboard initialization complete');
     });
     
     // Tab switching function
@@ -672,83 +762,6 @@
       else if (tabName === 'scan-history') loadScanHistory();
     }
     
-    // Initialize with demo data if no scans exist
-    function initializeDemoData() {
-      chrome.storage.local.get('scans', (data) => {
-        if (!data.scans || data.scans.length === 0) {
-          const demoScans = [
-            {
-              scanId: 'demo_1',
-              domain: 'google.com',
-              url: 'https://google.com',
-              title: 'Google',
-              pageType: 'Search Engine',
-              timestamp: Date.now() - 300000,
-              severity: 'clean',
-              summary: 'Google.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
-              agents: { osint: { severity: 'clean', threatScore: 2, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
-            },
-            {
-              scanId: 'demo_2',
-              domain: 'youtube.com',
-              url: 'https://youtube.com',
-              title: 'YouTube',
-              pageType: 'Video Platform',
-              timestamp: Date.now() - 600000,
-              severity: 'clean',
-              summary: 'YouTube.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
-              agents: { osint: { severity: 'clean', threatScore: 1, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
-            },
-            {
-              scanId: 'demo_3',
-              domain: 'github.com',
-              url: 'https://github.com',
-              title: 'GitHub',
-              pageType: 'Development Platform',
-              timestamp: Date.now() - 900000,
-              severity: 'clean',
-              summary: 'GitHub.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
-              agents: { osint: { severity: 'clean', threatScore: 3, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
-            },
-            {
-              scanId: 'demo_4',
-              domain: 'example-suspicious.com',
-              url: 'https://example-suspicious.com',
-              title: 'Suspicious Site',
-              pageType: 'Unknown',
-              timestamp: Date.now() - 1200000,
-              severity: 'medium',
-              summary: 'Domain example-suspicious.com assessed as medium risk. Suspicious domain pattern detected.',
-              agents: { osint: { severity: 'medium', threatScore: 55, indicators: ['Suspicious domain pattern detected'], recommendations: ['Keep browser updated', 'Use DNS-over-HTTPS'] } }
-            },
-            {
-              scanId: 'demo_5',
-              domain: 'facebook.com',
-              url: 'https://facebook.com',
-              title: 'Facebook',
-              pageType: 'Social Media',
-              timestamp: Date.now() - 1500000,
-              severity: 'clean',
-              summary: 'Facebook.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
-              agents: { osint: { severity: 'clean', threatScore: 4, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
-            },
-            {
-              scanId: 'demo_6',
-              domain: 'twitter.com',
-              url: 'https://twitter.com',
-              title: 'Twitter',
-              pageType: 'Social Media',
-              timestamp: Date.now() - 1800000,
-              severity: 'clean',
-              summary: 'Twitter.com is a well-established, globally trusted domain with strong reputation signals. No threat indicators found.',
-              agents: { osint: { severity: 'clean', threatScore: 5, indicators: [], recommendations: ['Domain is trusted — no action needed'] } }
-            }
-          ];
-          chrome.storage.local.set({ scans: demoScans });
-        }
-      });
-    }
-    
     function loadOverview() {
       chrome.storage.local.get('scans', (data) => {
         const scans = data.scans || [];
@@ -772,6 +785,29 @@
         document.getElementById('chart-warnings').textContent = warnings;
         document.getElementById('chart-threats').textContent = threats;
         
+        // Update donut chart
+        const total = scans.length || 1;
+        const cleanPercent = (clean / total) * 100;
+        const warningsPercent = (warnings / total) * 100;
+        const threatsPercent = (threats / total) * 100;
+        
+        const circumference = 2 * Math.PI * 80;
+        const cleanDash = (cleanPercent / 100) * circumference;
+        const warningsDash = (warningsPercent / 100) * circumference;
+        const threatsDash = (threatsPercent / 100) * circumference;
+        
+        const svg = document.querySelector('.donut-chart svg');
+        if (svg) {
+          svg.innerHTML = `
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#4ade80" stroke-width="40" 
+                    stroke-dasharray="${cleanDash} ${circumference}" stroke-dashoffset="0" />
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#fbbf24" stroke-width="40" 
+                    stroke-dasharray="${warningsDash} ${circumference}" stroke-dashoffset="-${cleanDash}" />
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#f87171" stroke-width="40" 
+                    stroke-dasharray="${threatsDash} ${circumference}" stroke-dashoffset="-${cleanDash + warningsDash}" />
+          `;
+        }
+        
         // Most visited domains
         const domainCounts = {};
         scans.forEach(s => {
@@ -782,29 +818,47 @@
           .sort((a, b) => b[1] - a[1])
           .slice(0, 5);
         
+        const mostVisitedDiv = document.getElementById('most-visited');
         if (topDomains.length > 0) {
-          document.getElementById('most-visited').innerHTML = topDomains.map(([domain, count]) => `
+          mostVisitedDiv.innerHTML = topDomains.map(([domain, count]) => `
             <div class="list-item">
               <div class="list-item-header">
                 <div class="list-item-title">${domain}</div>
-                <div class="list-item-badge badge-green">${count} visits</div>
+                <div class="list-item-badge badge-green">${count} visit${count > 1 ? 's' : ''}</div>
               </div>
             </div>
           `).join('');
+        } else {
+          mostVisitedDiv.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon">🌍</div>
+              <div class="empty-text">No visits yet</div>
+              <div class="empty-subtext">Browse some websites to see data here</div>
+            </div>
+          `;
         }
         
         // Flagged domains
         const flagged = scans.filter(s => s.severity === 'high' || s.severity === 'critical');
+        const flaggedDomainsDiv = document.getElementById('flagged-domains');
         if (flagged.length > 0) {
-          document.getElementById('flagged-domains').innerHTML = flagged.slice(0, 3).map(s => `
+          flaggedDomainsDiv.innerHTML = flagged.slice(0, 3).map(s => `
             <div class="list-item">
               <div class="list-item-header">
                 <div class="list-item-title">${s.domain}</div>
-                <div class="list-item-badge badge-red">${s.severity}</div>
+                <div class="list-item-badge badge-red">${s.severity.toUpperCase()}</div>
               </div>
               <div class="list-item-text">${s.summary.substring(0, 80)}...</div>
             </div>
           `).join('');
+        } else {
+          flaggedDomainsDiv.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon">🛡️</div>
+              <div class="empty-text">No flagged domains</div>
+              <div class="empty-subtext">High-risk sites will appear here</div>
+            </div>
+          `;
         }
       });
     }
